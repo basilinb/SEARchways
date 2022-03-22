@@ -5,7 +5,8 @@
 #' @param gene_id gene id is either HGNC or Ensembl
 #' @param dbs Enter the geneset database you want to run Enrichr on the default is MSigDB Hallmark 2020 to check available database run enrichR::listEnrichrDb()
 #' @param mod_of_interest Input your modules of interest by default will run modules
-#'
+#' @importFrom enrichR listEnrichrSites
+#' @importFrom enrichR listEnrichrDbs
 #' @return list with enrichr result for each geneset database
 #'
 #' @export
@@ -19,8 +20,8 @@ enrichr_run <- function(gene_mod_list, type = "gene",gene_id = "HGNC",dbs = c("M
   all_genes <- biomaRt::getBM(attributes=c('ensembl_gene_id','gene_biotype','hgnc_symbol'), mart = ensembl) %>%
     dplyr::filter(gene_biotype == "protein_coding")
   #Setting the website for Enrichr to run
-  enrichR::listEnrichrSites()
-  enrichR::listEnrichrDbs()
+  #enrichR::listEnrichrSites()
+  #enrichR::listEnrichrDbs()
   enrichR::setEnrichrSite("Enrichr")
   #Defining two empty lists
   enrich_list <- list()

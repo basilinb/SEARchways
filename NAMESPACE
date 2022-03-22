@@ -2,4 +2,6 @@
 
 export("%>%")
 export(enrichr_run)
+importFrom(enrichR,listEnrichrDbs)
+importFrom(enrichR,listEnrichrSites)
 importFrom(magrittr,"%>%")
