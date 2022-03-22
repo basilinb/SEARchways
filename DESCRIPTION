@@ -13,6 +13,8 @@ Imports:
     biomaRt,
     dplyr,
     magrittr,
-    enrichR (>= 3.0)
+    enrichR (>= 3.0),
+    listEnrichrDbs,
+    listEnrichrSites
 biocViews:
 Remotes: wjawaid/enrichR
