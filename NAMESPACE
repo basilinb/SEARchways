@@ -2,7 +2,8 @@
 
 export("%>%")
 export(enrichr_run)
-importFrom(enrichR,enrichr)
-importFrom(enrichR,listEnrichrDbs)
-importFrom(enrichR,listEnrichrSites)
+export(listEnrichrSites)
+importFrom(httr,GET)
+importFrom(httr,http_status)
+importFrom(httr,status_code)
 importFrom(magrittr,"%>%")
