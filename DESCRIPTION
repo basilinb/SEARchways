@@ -12,6 +12,7 @@ RoxygenNote: 7.1.2
 Imports: 
     biomaRt,
     dplyr,
-    magrittr
+    magrittr,
+    enrichR (>= 3.0)
 biocViews:
 Remotes: wjawaid/enrichR
