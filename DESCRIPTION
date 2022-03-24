@@ -14,6 +14,10 @@ Imports:
     dplyr,
     magrittr,
     enrichR (>= 3.0),
-    httr
+    httr,
+    tidyr,
+    msigdbr,
+    tibble,
+    fgsea
 biocViews:
 Remotes: wjawaid/enrichR
