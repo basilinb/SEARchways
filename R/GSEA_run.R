@@ -29,7 +29,7 @@
 #'
 #' @examples
 GSEA_run <- function(gene_list, gmt_ls=NULL, nperm=1000,group = NULL, subgroup = NULL, S = "human"){
-  pathway <- pval <- padj <- ES <- NES <- size <- leadingEdge <- fgsea.FC <- FDR <- NULL
+  pathway <- pval <- padj <- ES <- NES <- size <- leadingEdge <- fgsea.FC  <- NULL
   #Blank list to hold results
   all.results <- list()
 
@@ -86,7 +86,7 @@ GSEA_run <- function(gene_list, gmt_ls=NULL, nperm=1000,group = NULL, subgroup =
       dplyr::mutate(fgsea.FC = ifelse(NES < 0, "down","up")) %>%
       #format leading edge list
       tidyr::unnest(cols = c(leadingEdge)) %>%
-      dplyr::group_by(pathway,pval,FDR,ES,
+      dplyr::group_by(pathway,pval,padj,ES,
                NES,size,fgsea.FC) %>%
       dplyr::summarise(leadingEdge=paste(unique(leadingEdge), collapse=";"),
                        .groups="drop")
