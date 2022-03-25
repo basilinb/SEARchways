@@ -20,4 +20,5 @@ Imports:
     tibble,
     fgsea
 biocViews:
-Remotes: wjawaid/enrichR
+Remotes: wjawaid/enrichR, BIGslu/BIGpicture
+Suggests: BIGpicture
