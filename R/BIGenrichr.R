@@ -2,29 +2,29 @@
 
 # THIS PART IS FROM THE ENRICHR R FUNCTION https://github.com/wjawaid/enrichR
 
-##' onLoad hook to setup package options
-##'
-##' onLoad hook to setup package options and to check connection to website
-##' @title onLoad hook to setup package options
-##' @param libname (Required). Library name
-##' @param pkgname (Required). Package name
-##' @return NULL
-##' @author Wajid Jawaid \email{wj241@alumni.cam.ac.uk}
-.onAttach <- function(libname, pkgname) {
-  options(enrichR.base.address = "https://maayanlab.cloud/Enrichr/")
-  options(enrichR.live = TRUE)
-  packageStartupMessage("Welcome to enrichR\nChecking connection ... ", appendLF = TRUE)
-  options(modEnrichR.use = TRUE)
-  options(enrichR.sites.base.address = "https://maayanlab.cloud/")
-  options(enrichR.sites = c("Enrichr", "FlyEnrichr", "WormEnrichr", "YeastEnrichr", "FishEnrichr", "OxEnrichr"))
-  if (getOption("modEnrichR.use")) {
-    listEnrichrSites()
-  } else {
-    getEnrichr(url=paste0(getOption("enrichR.base.address"), "datasetStatistics"))
-    packageStartupMessage("Enrichr ... ", appendLF = FALSE)
-    if (getOption("enrichR.live")) packageStartupMessage("Connection is Live!")
-  }
-}
+# ##' onLoad hook to setup package options
+# ##'
+# ##' onLoad hook to setup package options and to check connection to website
+# ##' @title onLoad hook to setup package options
+# ##' @param libname (Required). Library name
+# ##' @param pkgname (Required). Package name
+# ##' @return NULL
+# ##' @author Wajid Jawaid \email{wj241@alumni.cam.ac.uk}
+# .onAttach <- function(libname, pkgname) {
+#   options(enrichR.base.address = "https://maayanlab.cloud/Enrichr/")
+#   options(enrichR.live = TRUE)
+#   packageStartupMessage("Welcome to enrichR\nChecking connection ... ", appendLF = TRUE)
+#   options(modEnrichR.use = TRUE)
+#   options(enrichR.sites.base.address = "https://maayanlab.cloud/")
+#   options(enrichR.sites = c("Enrichr", "FlyEnrichr", "WormEnrichr", "YeastEnrichr", "FishEnrichr", "OxEnrichr"))
+#   if (getOption("modEnrichR.use")) {
+#     listEnrichrSites()
+#   } else {
+#     getEnrichr(url=paste0(getOption("enrichR.base.address"), "datasetStatistics"))
+#     packageStartupMessage("Enrichr ... ", appendLF = FALSE)
+#     if (getOption("enrichR.live")) packageStartupMessage("Connection is Live!")
+#   }
+# }
 
 
 ##' Helper function
@@ -106,6 +106,22 @@ listEnrichrSites <- function(...) {
 #'
 #' @examples
 BIGenrichr <- function(gene_mod_list, type = "gene",gene_id = "HGNC",dbs = c("MSigDB_Hallmark_2020"),mod_of_interest = "all") {
+
+  options(enrichR.base.address = "https://maayanlab.cloud/Enrichr/")
+  options(enrichR.live = TRUE)
+  packageStartupMessage("Welcome to enrichR\nChecking connection ... ", appendLF = TRUE)
+  options(modEnrichR.use = TRUE)
+  options(enrichR.sites.base.address = "https://maayanlab.cloud/")
+  options(enrichR.sites = c("Enrichr", "FlyEnrichr", "WormEnrichr", "YeastEnrichr", "FishEnrichr", "OxEnrichr"))
+  if (getOption("modEnrichR.use")) {
+    listEnrichrSites()
+  } else {
+    getEnrichr(url=paste0(getOption("enrichR.base.address"), "datasetStatistics"))
+    packageStartupMessage("Enrichr ... ", appendLF = FALSE)
+    if (getOption("enrichR.live")) packageStartupMessage("Connection is Live!")
+  }
+
+
   #Set variables to Null
   gene_biotype <- module <- ensembl_gene_id <- hgnc_symbol <- NULL
   #Setting the website for Enrichr to run
