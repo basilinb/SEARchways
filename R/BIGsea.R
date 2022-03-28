@@ -1,10 +1,10 @@
-#' Run GSEA on multiple list using fgsea
-#'
+#' @title BIGsea
+#' @description Run GSEA on multiple list using fgsea. More information about GSEA and geneset databases check https://www.gsea-msigdb.org/gsea/msigdb
 #' @param gene_list named list object with named numeric vectors of gene symbols and logFC
 #' @param gmt_ls list object with gene ontology data
 #' @param nperm number of permutations for P-value calculations. Default is 1000
 #' @param group Which Geneset database you want to run GSEA on
-#' @param subgroup Specify subgroup of Geneset DB you want to run GSEA on \cr
+#' @param subgroup Specify subgroup of Geneset database you want to run GSEA on. Below is the list of commonly used Genesets \cr
 #' \tabular{rrrrr}{
 #'  \strong{Group} \tab    \strong{Sub-group}\cr
 #'  C1  \tab      \cr
@@ -15,11 +15,12 @@
 #'  C2  \tab      CP:PID\cr
 #'  C2  \tab      CP:REACTOME\cr
 #'  C2  \tab      CP:WIKIPATHWAYS\cr
+#'  C3  \tab      \cr
 #'  C5  \tab      GO:BP\cr
 #'  C5  \tab      GO:CC\cr
 #'  C5  \tab      GO:MF\cr
 #'  C5  \tab      HPO\cr
-#'  C6  \tab     \cr
+#'  C6  \tab      \cr
 #'  H   \tab      \cr
 #'  }
 #' @param S Specify specie for Geneset database default is human
@@ -28,7 +29,7 @@
 #' @export
 #'
 #' @examples
-GSEA_run <- function(gene_list, gmt_ls=NULL, nperm=1000,group = NULL, subgroup = NULL, S = "human"){
+BIGsea <- function(gene_list, gmt_ls=NULL, nperm=1000,group = NULL, subgroup = NULL, S = "human"){
   pathway <- pval <- padj <- ES <- NES <- size <- leadingEdge <- fgsea.FC  <- NULL
   #Blank list to hold results
   all.results <- list()
@@ -36,7 +37,7 @@ GSEA_run <- function(gene_list, gmt_ls=NULL, nperm=1000,group = NULL, subgroup =
   #### Data ####
   #Load gene ontology
   if(!is.null(group) & !is.null(subgroup)){
-    #myGO <- fgsea::gmtPathways(gmt_file)
+
     gene_sets = msigdbr::msigdbr(species = S, category = group, subcategory = subgroup)
     myGO <- split(x = gene_sets$gene_symbol, f = gene_sets$gs_name)
   } else if(!is.null(group) & is.null(subgroup)){

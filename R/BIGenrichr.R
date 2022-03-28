@@ -108,13 +108,9 @@ listEnrichrSites <- function(...) {
 #' @export
 #'
 #' @examples
-enrichr_run <- function(gene_mod_list, type = "gene",gene_id = "HGNC",dbs = c("MSigDB_Hallmark_2020"),mod_of_interest = "all") {
+BIGenrichr <- function(gene_mod_list, type = "gene",gene_id = "HGNC",dbs = c("MSigDB_Hallmark_2020"),mod_of_interest = "all") {
   #Set variables to Null
   gene_biotype <- module <- ensembl_gene_id <- hgnc_symbol <- NULL
-  #Download Ensembl gene list to get HGNC symbols
-  ensembl = biomaRt::useEnsembl(biomart="ensembl", dataset="hsapiens_gene_ensembl")
-  all_genes <- biomaRt::getBM(attributes=c('ensembl_gene_id','gene_biotype','hgnc_symbol'), mart = ensembl) %>%
-    dplyr::filter(gene_biotype == "protein_coding")
   #Setting the website for Enrichr to run
   enrichR::setEnrichrSite("Enrichr")
   #Defining two empty lists
@@ -130,6 +126,10 @@ enrichr_run <- function(gene_mod_list, type = "gene",gene_id = "HGNC",dbs = c("M
     if (gene_id == "HGNC") {
       gene_list <- gene_mod_list
     }else{
+      #Download Ensembl gene list to get HGNC symbols
+      ensembl = biomaRt::useEnsembl(biomart="ensembl", dataset="hsapiens_gene_ensembl")
+      all_genes <- biomaRt::getBM(attributes=c('ensembl_gene_id','gene_biotype','hgnc_symbol'), mart = ensembl) %>%
+        dplyr::filter(gene_biotype == "protein_coding")
       # Check to see if its HGNC symbol or Ensembl ID and formatting the data
       gene_list <- all_genes %>% dplyr::filter(ensembl_gene_id %in% gene_mod_list) %>% dplyr::pull(hgnc_symbol)
     }
