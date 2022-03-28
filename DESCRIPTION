@@ -15,8 +15,8 @@ Imports:
     httr,
     tidyr,
     msigdbr,
-    tibble,
-    fgsea
-biocViews:
+    tibble
+    
+biocViews:fgsea
 Remotes: wjawaid/enrichR, BIGslu/BIGpicture
 Suggests: BIGpicture
