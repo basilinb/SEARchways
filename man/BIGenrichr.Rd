@@ -29,3 +29,6 @@ list with enrichr result for each geneset database
 \description{
 Run EnrichR function on multiple Geneset databases on either gene list or modules of intertest
 }
+\author{
+Basilin Benson
+}

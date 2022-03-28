@@ -1,6 +1,6 @@
 
 
-
+# THIS PART IS FROM THE ENRICHR R FUNCTION https://github.com/wjawaid/enrichR
 
 ##' onLoad hook to setup package options
 ##'
@@ -73,7 +73,6 @@ getEnrichr <- function(url, ...) {
 ##' @return print Enrichr Website status
 ##' @author Alexander Blume
 ##' @param ... (Optional  Additional parameters)
-##' @export
 listEnrichrSites <- function(...) {
   for (site in getOption("enrichR.sites")) {
     getEnrichr(url = paste0(getOption("enrichR.sites.base.address"), site, "/", "datasetStatistics"))
@@ -89,10 +88,7 @@ listEnrichrSites <- function(...) {
 
 
 
-
-
-
-
+# FROM HERE THE MODIFICATIONS WERE DONE
 
 
 #' Run EnrichR function on multiple Geneset databases on either gene list or modules of intertest
@@ -102,6 +98,7 @@ listEnrichrSites <- function(...) {
 #' @param gene_id gene id is either HGNC or Ensembl
 #' @param dbs Enter the geneset database you want to run Enrichr on the default is MSigDB Hallmark 2020 to check available database run enrichR::listEnrichrDb()
 #' @param mod_of_interest Input your modules of interest by default will run modules
+#' @author Basilin Benson
 
 #' @return list with enrichr result for each geneset database
 #'

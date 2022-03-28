@@ -3,7 +3,6 @@
 export("%>%")
 export(BIGenrichr)
 export(BIGsea)
-export(listEnrichrSites)
 importFrom(httr,GET)
 importFrom(httr,http_status)
 importFrom(httr,status_code)
