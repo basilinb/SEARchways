@@ -1,4 +1,4 @@
-Package: TestPackage
+Package: SEARchways
 Title: One place for GSEA, enrichr and clusterprofiler
 Version: 0.0.0.1
 Authors@R: person("Basilin", "Benson",email ="basilinb@uw.edu", role = c("aut", "cre"))
